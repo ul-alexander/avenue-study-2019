@@ -1,10 +1,14 @@
 package Lesson9;
 
 public class FractionNumberOperationImpl implements FractionNumberOperation {
+    //
+    //
+    //
     @Override
     public FractionNumber add(FractionNumber a, FractionNumber b) throws NullPointerException {
         //
         FractionNumber fractionNumber = new FractionNumberImpl();
+        //
         // if divisor == divisor
         if (a.getDivisor() == b.getDivisor()) {
             fractionNumber.setDividend(a.getDividend() + b.getDividend());
@@ -28,16 +32,21 @@ public class FractionNumberOperationImpl implements FractionNumberOperation {
                 fractionNumber.setDivisor(fractionNumber.getDivisor() / i);
             }
         }
+        //
         return fractionNumber;
     }
 
+    //
+    //
+    //
     @Override
     public FractionNumber sub(FractionNumber a, FractionNumber b) throws NullPointerException {
         //
         FractionNumber fractionNumber = new FractionNumberImpl();
         //
+        // if divisor == divisor
         if (a.getDivisor() == b.getDivisor()) {
-            fractionNumber.setDividend(a.getDividend() - b.getDividend());
+            fractionNumber.setDividend(a.getDividend() + b.getDividend());
             fractionNumber.setDivisor(a.getDivisor());
             return fractionNumber;
         }
@@ -48,8 +57,9 @@ public class FractionNumberOperationImpl implements FractionNumberOperation {
                 fractionNumber.setDivisor(i);
             }
         }
-        //
-        fractionNumber.setDividend((a.getDividend() * b.getDivisor()) - (a.getDivisor() * b.getDividend()));
+        int additionalFactor1 = fractionNumber.getDivisor() / a.getDivisor();
+        int additionalFactor2 = fractionNumber.getDivisor() / b.getDivisor();
+        fractionNumber.setDividend((a.getDividend() * additionalFactor1) - (b.getDividend() * additionalFactor2));
         //
         for (int i = 1; i < fractionNumber.getDivisor(); i++) {
             if (fractionNumber.getDividend() % i == 0 && fractionNumber.getDivisor() % i == 0) {
@@ -57,25 +67,28 @@ public class FractionNumberOperationImpl implements FractionNumberOperation {
                 fractionNumber.setDivisor(fractionNumber.getDivisor() / i);
             }
         }
+        //
         return fractionNumber;
     }
 
+    //
+    //
+    //
     @Override
     public FractionNumber mul(FractionNumber a, FractionNumber b) throws NullPointerException {
         //
         FractionNumber fractionNumber = new FractionNumberImpl();
         //
+        fractionNumber.setDividend(a.getDividend() * b.getDividend());
         fractionNumber.setDivisor(a.getDivisor() * b.getDivisor());
-        for (int i = 1; i < fractionNumber.getDivisor(); i++) {
-            if (b.getDividend() % i == 0 && b.getDivisor() % i == 0) {
-                fractionNumber.setDividend(b.getDividend() / i);
-                fractionNumber.setDivisor(b.getDivisor() / i);
+        //
+        for (int i = 1; (i < fractionNumber.getDivisor() || i < fractionNumber.getDividend()); i++) {
+            if (fractionNumber.getDividend() % i == 0 && fractionNumber.getDivisor() % i == 0) {
+                fractionNumber.setDividend(fractionNumber.getDividend() / i);
+                fractionNumber.setDivisor(fractionNumber.getDivisor() / i);
             }
         }
-
-        fractionNumber.setDividend(a.getDividend() * fractionNumber.getDividend());
-        fractionNumber.setDivisor(a.getDivisor() * fractionNumber.getDivisor());
-
+        //
         return fractionNumber;
     }
 
@@ -84,15 +97,16 @@ public class FractionNumberOperationImpl implements FractionNumberOperation {
         //
         FractionNumber fractionNumber = new FractionNumberImpl();
         //
-        fractionNumber.setDivisor(a.getDivisor() * b.getDivisor());
-        for (int i = 1; i < fractionNumber.getDivisor(); i++) {
-            if (b.getDividend() % i == 0 && b.getDivisor() % i == 0) {
-                fractionNumber.setDivisor(b.getDividend() / i);
-                fractionNumber.setDividend(b.getDivisor() / i);
+        fractionNumber.setDividend(a.getDividend() * b.getDivisor());
+        fractionNumber.setDivisor(a.getDivisor() * b.getDividend());
+        //
+        for (int i = 1; (i < fractionNumber.getDivisor() || i < fractionNumber.getDividend()); i++) {
+            if (fractionNumber.getDividend() % i == 0 && fractionNumber.getDivisor() % i == 0) {
+                fractionNumber.setDividend(fractionNumber.getDividend() / i);
+                fractionNumber.setDivisor(fractionNumber.getDivisor() / i);
             }
         }
-        fractionNumber.setDividend(a.getDividend() * fractionNumber.getDividend());
-        fractionNumber.setDivisor(a.getDivisor() * fractionNumber.getDivisor());
+        //
         return fractionNumber;
     }
 }
