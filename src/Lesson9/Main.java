@@ -4,22 +4,24 @@ public class Main {
     public static void main(String[] args) {
 
         //Дробь 1
-        FractionNumberImpl fractionNumber1 = new FractionNumberImpl(1,5);
+        FractionNumberImpl fractionNumber1 = new FractionNumberImpl(6, 57);
         //Дробь 2
-        FractionNumberImpl fractionNumber2 = new FractionNumberImpl(10,15);
+        FractionNumberImpl fractionNumber2 = new FractionNumberImpl(13, 36);
         //////////////////////////////////
-        System.out.println(fractionNumber1);
 
         //Интерфейс калькулятора
-
         FractionNumberOperationImpl calculator = new FractionNumberOperationImpl();
-
-        int number1 = 10;
-        int number2 = 6;
-
         //Addition (сложение)
+        FractionNumber result = calculator.add(fractionNumber1, fractionNumber2);
+        System.out.println(result);
         //Subtraction (вычитание)
+        FractionNumber result2 = calculator.sub(fractionNumber1, fractionNumber2);
+        System.out.println(result2);
         //Multiplication (умножение)
+        FractionNumber result3 = calculator.mul(fractionNumber1, fractionNumber2);
+        System.out.println(result3);
         //Division (деление)
+        FractionNumber result4 = calculator.div(fractionNumber1, fractionNumber2);
+        System.out.println(result4);
     }
 }
