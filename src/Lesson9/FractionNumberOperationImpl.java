@@ -5,7 +5,7 @@ public class FractionNumberOperationImpl implements FractionNumberOperation {
     public FractionNumber add(FractionNumber a, FractionNumber b) throws NullPointerException {
         //
         FractionNumber fractionNumber = new FractionNumberImpl();
-        //
+        // if divisor == divisor
         if (a.getDivisor() == b.getDivisor()) {
             fractionNumber.setDividend(a.getDividend() + b.getDividend());
             fractionNumber.setDivisor(a.getDivisor());
@@ -18,8 +18,9 @@ public class FractionNumberOperationImpl implements FractionNumberOperation {
                 fractionNumber.setDivisor(i);
             }
         }
-        //
-        fractionNumber.setDividend((a.getDividend() * b.getDivisor()) + (a.getDivisor() * b.getDividend()));
+        int additionalFactor1 = fractionNumber.getDivisor() / a.getDivisor();
+        int additionalFactor2 = fractionNumber.getDivisor() / b.getDivisor();
+        fractionNumber.setDividend((a.getDividend() * additionalFactor1) + (b.getDividend() * additionalFactor2));
         //
         for (int i = 1; i < fractionNumber.getDivisor(); i++) {
             if (fractionNumber.getDividend() % i == 0 && fractionNumber.getDivisor() % i == 0) {

@@ -4,9 +4,9 @@ public class Main {
     public static void main(String[] args) {
 
         //Дробь 1
-        FractionNumberImpl fractionNumber1 = new FractionNumberImpl(6, 57);
+        FractionNumberImpl fractionNumber1 = new FractionNumberImpl(2, 15);
         //Дробь 2
-        FractionNumberImpl fractionNumber2 = new FractionNumberImpl(13, 36);
+        FractionNumberImpl fractionNumber2 = new FractionNumberImpl(12, 35);
         //////////////////////////////////
 
         //Интерфейс калькулятора
