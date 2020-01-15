@@ -1,5 +1,9 @@
 package Lesson15;
 
+import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class StringUtilsImpl implements StringUtils {
 
     @Override
@@ -38,13 +42,27 @@ public class StringUtilsImpl implements StringUtils {
         if (text == null || word == null) {
             throw new NullPointerException("Один из передаваемых параметров пустой...");
         }
-
-        String wordFinding;
+        ArrayList<Integer> list = new ArrayList<>();
 
         try {
-            wordFinding = text.;
-        } catch ();
-        return new int[0];
+            Pattern pattern = Pattern.compile("\\b" + word);
+            Matcher matcher = pattern.matcher(text);
+
+            while (matcher.find()) {
+                list.add(matcher.start());
+            }
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        int[] result = new int[list.size()];
+        for (int i = 0; i < result.length; i++){
+            result[i] = list.get(i);
+        }
+
+        return result;
+
     }
 
     @Override
