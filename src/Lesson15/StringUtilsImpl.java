@@ -34,6 +34,16 @@ public class StringUtilsImpl implements StringUtils {
 
     @Override
     public int[] findWord(String text, String word) throws NullPointerException {
+
+        if (text == null || word == null) {
+            throw new NullPointerException("Один из передаваемых параметров пустой...");
+        }
+
+        String wordFinding;
+
+        try {
+            wordFinding = text.;
+        } catch ();
         return new int[0];
     }
 

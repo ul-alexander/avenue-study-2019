@@ -7,6 +7,7 @@ package Lesson15;
  * @version 1.0
  */
 public class CustomException extends Exception {
+
 	private static final long serialVersionUID = -1347918112213969278L;
 	
 	public CustomException(String message, Throwable cause) {
